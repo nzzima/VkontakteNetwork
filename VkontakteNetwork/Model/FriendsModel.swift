@@ -15,7 +15,7 @@ struct Friends: Decodable {
     var items: [Friend]
 }
 
-struct Friend: Decodable {
+struct Friend: Decodable, Hashable {
     var photo: String
     var firstName: String
     var lastName: String

@@ -18,6 +18,7 @@
 		8E98FAB02C8B2AA800D9FB3C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98FAAF2C8B2AA800D9FB3C /* LoginViewModel.swift */; };
 		8E98FAB22C8B2AC300D9FB3C /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98FAB12C8B2AC300D9FB3C /* FriendsViewModel.swift */; };
 		8E98FAB42C8B2ADF00D9FB3C /* FriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98FAB32C8B2ADF00D9FB3C /* FriendsModel.swift */; };
+		8E98FAB72C8B30FA00D9FB3C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 8E98FAB62C8B30FA00D9FB3C /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E98FAB72C8B30FA00D9FB3C /* SDWebImageSwiftUI in Frameworks */,
 				8E98FAA52C8B295F00D9FB3C /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,6 +131,7 @@
 			name = VkontakteNetwork;
 			packageProductDependencies = (
 				8E98FAA42C8B295F00D9FB3C /* Alamofire */,
+				8E98FAB62C8B30FA00D9FB3C /* SDWebImageSwiftUI */,
 			);
 			productName = VkontakteNetwork;
 			productReference = 8E98FA922C8B290300D9FB3C /* VkontakteNetwork.app */;
@@ -160,6 +163,7 @@
 			mainGroup = 8E98FA892C8B290300D9FB3C;
 			packageReferences = (
 				8E98FAA32C8B295F00D9FB3C /* XCRemoteSwiftPackageReference "Alamofire" */,
+				8E98FAB52C8B30FA00D9FB3C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 8E98FA932C8B290300D9FB3C /* Products */;
 			projectDirPath = "";
@@ -410,6 +414,14 @@
 				kind = branch;
 			};
 		};
+		8E98FAB52C8B30FA00D9FB3C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -417,6 +429,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8E98FAA32C8B295F00D9FB3C /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		8E98FAB62C8B30FA00D9FB3C /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E98FAB52C8B30FA00D9FB3C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
