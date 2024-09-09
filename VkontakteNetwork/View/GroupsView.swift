@@ -1,5 +1,5 @@
 //
-//  FriendsView.swift
+//  GroupsView.swift
 //  VkontakteNetwork
 //
 //  Created by Nikita Krylov on 09.09.2024.
@@ -9,18 +9,18 @@ import SwiftUI
 import SDWebImage
 import SDWebImageSwiftUI
 
-struct FriendsView: View {
+struct GroupsView: View {
     
     @EnvironmentObject var loginViewModel: LoginViewModel
-    @ObservedObject var friendsViewModel = FriendsViewModel()
-    @State var friends = [Friend]()
+    @ObservedObject var groupsViewModel = GroupsViewModel()
+    @State var groups = [Group]()
     
     var body: some View {
         ZStack {
             ScrollView(.vertical) {
                 LazyVStack {
-                    ForEach(friends, id: \.self) { friend in
-                            FriendItem(name: friend.firstName, surname: friend.lastName, photo: friend.photo)
+                    ForEach(groups, id: \.self) { group in
+                            GroupItem(name: group.name, photo: group.photo)
                     }
                 }
                 .padding(10)
@@ -28,21 +28,20 @@ struct FriendsView: View {
         }
         .padding(.top, 50)
         .onAppear{
-            friendsViewModel.getFriends(token: loginViewModel.token) {friends in
-                self.friends = friends
-                print(friends) //Friends information in console
+            groupsViewModel.getGroups(token: loginViewModel.token) {groups in
+                self.groups = groups
+                print(groups) //Groups information in console
             }
         }
     }
 }
 
 #Preview {
-    FriendsView()
+    GroupsView()
 }
 
-struct FriendItem: View {
+struct GroupItem: View {
     var name: String
-    var surname: String
     var photo: String
     
     var body: some View{
@@ -55,7 +54,6 @@ struct FriendItem: View {
                 Text(name)
                     .font(.system(size: 18))
                     .padding(.bottom, 2)
-                Text(surname)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)

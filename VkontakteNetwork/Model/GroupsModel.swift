@@ -17,10 +17,10 @@ struct Groups: Decodable {
 
 struct Group: Decodable, Hashable {
     var photo: String
-    var title: String
+    var name: String
     
     enum CodingKeys: String, CodingKey{
-        case title = "title"
+        case name = "name"
         case photo = "photo_50"
     }
 }
