@@ -17,7 +17,7 @@ class GroupsViewModel: ObservableObject {
             "extended": 1,
             "fields": "photo_50",
             "v": "5.199",
-            "count": 200
+            "count": 30
         ] as [String : AnyObject]
         
         AF.request(url, method: .post, parameters: params).response {result  in

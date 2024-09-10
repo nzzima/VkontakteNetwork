@@ -23,7 +23,7 @@ struct AppView: View {
                 .tabItem {
                     Text("Groups")
                 }
-            Text("Photos")
+            PhotosView()
                 .tag("3")
                 .tabItem {
                     Text("Photos")
