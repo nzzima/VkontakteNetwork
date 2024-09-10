@@ -25,7 +25,8 @@ struct WebView: UIViewRepresentable {
             URLQueryItem(name: "client_id", value: "52265751"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
             URLQueryItem(name: "display", value: "mobile"),
-            URLQueryItem(name: "response_type", value: "token")
+            URLQueryItem(name: "response_type", value: "token"),
+            URLQueryItem(name: "scope", value: "photos")
         ]
         let request = URLRequest(url: urlComponents.url!)
         webView.load(request)
