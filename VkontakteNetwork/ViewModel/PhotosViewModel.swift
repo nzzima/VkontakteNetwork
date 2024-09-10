@@ -23,8 +23,6 @@ class PhotosViewModel: ObservableObject {
         
         AF.request(url, method: .post, parameters: params).response {result  in
             if let data = result.data {
-                
-                //Cant complete decode because of ?????
                 if let photos = try? JSONDecoder().decode(PhotoResponse.self, from: data).response.items
                 {
                     completion(photos)
