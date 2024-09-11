@@ -26,6 +26,7 @@
 		8E98FAB22C8B2AC300D9FB3C /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98FAB12C8B2AC300D9FB3C /* FriendsViewModel.swift */; };
 		8E98FAB42C8B2ADF00D9FB3C /* FriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98FAB32C8B2ADF00D9FB3C /* FriendsModel.swift */; };
 		8E98FAB72C8B30FA00D9FB3C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 8E98FAB62C8B30FA00D9FB3C /* SDWebImageSwiftUI */; };
+		8EEEA3D62C91C48200197C55 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8EEEA3D52C91C48200197C55 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		8E98FAAF2C8B2AA800D9FB3C /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8E98FAB12C8B2AC300D9FB3C /* FriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = "<group>"; };
 		8E98FAB32C8B2ADF00D9FB3C /* FriendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsModel.swift; sourceTree = "<group>"; };
+		8EEEA3D52C91C48200197C55 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 		8E98FA892C8B290300D9FB3C = {
 			isa = PBXGroup;
 			children = (
+				8EEEA3D52C91C48200197C55 /* README.md */,
 				8E98FA942C8B290300D9FB3C /* VkontakteNetwork */,
 				8E98FA932C8B290300D9FB3C /* Products */,
 			);
@@ -200,6 +203,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EEEA3D62C91C48200197C55 /* README.md in Resources */,
 				8E98FA9D2C8B290400D9FB3C /* Preview Assets.xcassets in Resources */,
 				8E98FA9A2C8B290400D9FB3C /* Assets.xcassets in Resources */,
 			);
