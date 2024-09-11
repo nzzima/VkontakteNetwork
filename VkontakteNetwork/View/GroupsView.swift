@@ -18,6 +18,7 @@ struct GroupsView: View {
     var body: some View {
         ZStack {
             ScrollView(.vertical) {
+                Text("Groups")
                 LazyVStack {
                     ForEach(groups, id: \.self) { group in
                             GroupItem(name: group.name, photo: group.photo)

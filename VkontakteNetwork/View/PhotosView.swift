@@ -18,6 +18,7 @@ struct PhotosView: View {
     var body: some View {
         ZStack {
             ScrollView(.vertical) {
+                Text("Photos")
                 LazyVStack {
                     ForEach(photos, id: \.self) { photo in
                         PhotoItem(surl: photo.sizes[0].url)

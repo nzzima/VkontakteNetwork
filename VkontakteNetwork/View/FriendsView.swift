@@ -18,6 +18,7 @@ struct FriendsView: View {
     var body: some View {
         ZStack {
             ScrollView(.vertical) {
+                Text("Friends")
                 LazyVStack {
                     ForEach(friends, id: \.self) { friend in
                         FriendItem(name: friend.firstName, surname: friend.lastName, photo: friend.photo, online: friend.online)
