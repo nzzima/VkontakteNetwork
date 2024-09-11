@@ -19,7 +19,9 @@ struct PhotosView: View {
         ZStack {
             ScrollView(.vertical) {
                 LazyVStack {
-                    Text("HELLO")
+                    ForEach(photos, id: \.self) { photo in
+                        PhotoItem(surl: photo.sizes[0].url)
+                    }
                 }
                 .padding(10)
             }
@@ -38,17 +40,14 @@ struct PhotosView: View {
     PhotosView()
 }
 
-//struct PhotoItem: View {
-//    var url_str: String
-//    
-//    var body: some View{
-//        HStack{
-//            WebImage(url: URL(string: url_str))
-//                .resizable()
-//                .frame(width: 50, height: 50)
-//                .clipShape(Circle())
-//        }
-//        .frame(maxWidth: .infinity, alignment: .leading)
-//        .padding(.bottom, 8)
-//    }
-//}
+struct PhotoItem: View {
+    var surl: String
+    
+    var body: some View{
+        HStack{
+            WebImage(url: URL(string: surl))
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.bottom, 8)
+    }
+}

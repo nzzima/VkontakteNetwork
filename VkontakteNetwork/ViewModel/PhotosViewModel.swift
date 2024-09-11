@@ -15,10 +15,8 @@ class PhotosViewModel: ObservableObject {
         let params = [
             "access_token": token,
             "album_id": "wall",
-            "rev": 0,
-            "extended": 1,
             "v": "5.199",
-            "count": 200
+            "count": 20
         ] as [String : AnyObject]
         
         AF.request(url, method: .post, parameters: params).response {result  in
@@ -26,9 +24,6 @@ class PhotosViewModel: ObservableObject {
                 if let photos = try? JSONDecoder().decode(PhotoResponse.self, from: data).response.items
                 {
                     completion(photos)
-                }
-                else {
-                    print("Cant decode ???")
                 }
             }
         }

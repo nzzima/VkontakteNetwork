@@ -16,9 +16,9 @@ struct Photos: Decodable {
 }
 
 struct Photo: Decodable, Hashable {
-    var likes: String
-    
-    enum CodingKeys: String, CodingKey{
-        case likes = "likes"
-    }
+    var sizes: [Sizes]
+}
+
+struct Sizes: Decodable, Hashable {
+    var url: String
 }
