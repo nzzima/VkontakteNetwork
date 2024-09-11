@@ -14,7 +14,7 @@ class FriendsViewModel: ObservableObject {
         
         let params = [
             "access_token": token,
-            "fields": "photo_50",
+            "fields": "photo_50,online",
             "v": "5.199",
             "count": 200
         ] as [String : AnyObject]

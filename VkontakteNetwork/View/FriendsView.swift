@@ -20,7 +20,7 @@ struct FriendsView: View {
             ScrollView(.vertical) {
                 LazyVStack {
                     ForEach(friends, id: \.self) { friend in
-                        FriendItem(name: friend.firstName, surname: friend.lastName, photo: friend.photo)
+                        FriendItem(name: friend.firstName, surname: friend.lastName, photo: friend.photo, online: friend.online)
                     }
                 }
                 .padding(10)
@@ -44,7 +44,7 @@ struct FriendItem: View {
     var name: String
     var surname: String
     var photo: String
-    //var online: Int?
+    var online: Int
     
     var body: some View{
         HStack{
@@ -57,6 +57,11 @@ struct FriendItem: View {
                     .font(.system(size: 18))
             }
             Text(surname)
+            if (online == 1) {
+                Text("Online").font(.system(size: 10))
+            } else {
+                Text("Offline").font(.system(size: 10))
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.bottom, 8)

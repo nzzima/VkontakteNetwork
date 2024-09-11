@@ -19,11 +19,12 @@ struct Friend: Decodable, Hashable {
     var photo: String
     var firstName: String
     var lastName: String
-    var online: Int!
+    var online: Int
     
     enum CodingKeys: String, CodingKey{
         case firstName = "first_name"
         case lastName = "last_name"
         case photo = "photo_50"
+        case online = "online"
     }
 }
