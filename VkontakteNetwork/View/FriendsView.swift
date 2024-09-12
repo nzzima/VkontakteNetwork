@@ -59,9 +59,9 @@ struct FriendItem: View {
             }
             Text(surname)
             if (online == 1) {
-                Text("Online").font(.system(size: 10))
+                Text("Online").font(.system(size: 10)).foregroundStyle(.green)
             } else {
-                Text("Offline").font(.system(size: 10))
+                Text("Offline").font(.system(size: 10)).foregroundStyle(.gray)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
