@@ -24,7 +24,7 @@ struct AppView: View {
                         .tag("Groups")
                     PhotosView()
                         .tag("Photos")
-                    Text("Profile")
+                    ProfileView()
                         .tag("Profile")
             }
             HStack {
