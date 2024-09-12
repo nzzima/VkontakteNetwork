@@ -29,6 +29,7 @@ struct PhotosView: View {
             }
         }
         .padding(.top, 1)
+        .padding(.bottom, 15)
         .onAppear{
             photosViewModel.getPhotos(token: loginViewModel.token) {photos in
                 self.photos = photos

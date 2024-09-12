@@ -28,6 +28,7 @@ struct GroupsView: View {
             }
         }
         .padding(.top, 1)
+        .padding(.bottom, 15)
         .onAppear{
             groupsViewModel.getGroups(token: loginViewModel.token) {groups in
                 self.groups = groups

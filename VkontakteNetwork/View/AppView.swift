@@ -58,7 +58,7 @@ struct TabBarItem: View {
                         .foregroundColor(selected == tab ? Color("SolidBG") : .white)
                     Image("Profile")
                         .resizable()
-                        .frame(width: 30, height: 30)
+                        .frame(width: 28, height: 38)
                         .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                 }
             }

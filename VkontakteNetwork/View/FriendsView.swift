@@ -28,6 +28,7 @@ struct FriendsView: View {
             }
         }
         .padding(.top, 1)
+        .padding(.bottom, 15)
         .onAppear{
             friendsViewModel.getFriends(token: loginViewModel.token) {friends in
                 self.friends = friends
