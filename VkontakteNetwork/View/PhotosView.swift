@@ -14,6 +14,7 @@ struct PhotosView: View {
     @EnvironmentObject var loginViewModel: LoginViewModel
     @ObservedObject var photosViewModel = PhotosViewModel()
     @State var photos = [Photo]()
+    var point = 1
     
     var body: some View {
         ZStack {
@@ -27,7 +28,7 @@ struct PhotosView: View {
                 .padding(10)
             }
         }
-        .padding(.top, 50)
+        .padding(.top, 1)
         .onAppear{
             photosViewModel.getPhotos(token: loginViewModel.token) {photos in
                 self.photos = photos
