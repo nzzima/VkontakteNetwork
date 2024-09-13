@@ -1,8 +1,11 @@
 ## Friends screen
-![Img](friends.png)
+![Img](friends.png)  
 
 ## Groups screen
-![Img](groups.png)
+![Img](groups.png)  
 
 ## Photos screen
-![Img](photos.png)
+![Img](photos.png)  
+
+## Profile screen
+![Img](profile.png) 
