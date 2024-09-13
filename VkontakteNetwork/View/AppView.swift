@@ -27,6 +27,7 @@ struct AppView: View {
                     ProfileView()
                         .tag("Profile")
             }
+            .tabViewStyle(.page(indexDisplayMode: .never))
             HStack {
                 ForEach(tabs, id: \.self) {tab in
                     Spacer()
@@ -47,11 +48,8 @@ struct TabBarItem: View {
     @Binding var selected: String
     var body: some View {
         if tab == "Profile" {
-            Button {
-                withAnimation(.spring()) {
-                    selected = tab
-                }
-            } label: {
+            Button(action: { withAnimation {selected = tab}})
+            {
                 ZStack {
                     Circle()
                         .frame(width: 35, height: 35)
@@ -62,7 +60,6 @@ struct TabBarItem: View {
                         .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                 }
             }
-            
         } else {
             ZStack {
                 Button {
