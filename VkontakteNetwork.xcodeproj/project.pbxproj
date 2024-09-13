@@ -15,6 +15,8 @@
 		8E4DFF0A2C8ED9B3004EE5FF /* GroupsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DFF092C8ED9B3004EE5FF /* GroupsModel.swift */; };
 		8E4DFF0C2C8EDB0E004EE5FF /* GroupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DFF0B2C8EDB0E004EE5FF /* GroupsViewModel.swift */; };
 		8E4DFF0E2C8EDB9E004EE5FF /* GroupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DFF0D2C8EDB9E004EE5FF /* GroupsView.swift */; };
+		8E526FA82C944DF400EC3ECA /* UsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E526FA72C944DF400EC3ECA /* UsersModel.swift */; };
+		8E526FAA2C944EF700EC3ECA /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E526FA92C944EF700EC3ECA /* UsersViewModel.swift */; };
 		8E98FA962C8B290300D9FB3C /* VkontakteNetworkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98FA952C8B290300D9FB3C /* VkontakteNetworkApp.swift */; };
 		8E98FA982C8B290300D9FB3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98FA972C8B290300D9FB3C /* ContentView.swift */; };
 		8E98FA9A2C8B290400D9FB3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E98FA992C8B290400D9FB3C /* Assets.xcassets */; };
@@ -39,6 +41,8 @@
 		8E4DFF092C8ED9B3004EE5FF /* GroupsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsModel.swift; sourceTree = "<group>"; };
 		8E4DFF0B2C8EDB0E004EE5FF /* GroupsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewModel.swift; sourceTree = "<group>"; };
 		8E4DFF0D2C8EDB9E004EE5FF /* GroupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsView.swift; sourceTree = "<group>"; };
+		8E526FA72C944DF400EC3ECA /* UsersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersModel.swift; sourceTree = "<group>"; };
+		8E526FA92C944EF700EC3ECA /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		8E98FA922C8B290300D9FB3C /* VkontakteNetwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkontakteNetwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E98FA952C8B290300D9FB3C /* VkontakteNetworkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkontakteNetworkApp.swift; sourceTree = "<group>"; };
 		8E98FA972C8B290300D9FB3C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 				8E98FAB12C8B2AC300D9FB3C /* FriendsViewModel.swift */,
 				8E4DFF0B2C8EDB0E004EE5FF /* GroupsViewModel.swift */,
 				8E31CB802C901D1C004A86C0 /* PhotosViewModel.swift */,
+				8E526FA92C944EF700EC3ECA /* UsersViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 				8E98FAB32C8B2ADF00D9FB3C /* FriendsModel.swift */,
 				8E4DFF092C8ED9B3004EE5FF /* GroupsModel.swift */,
 				8E31CB822C901D32004A86C0 /* PhotosModel.swift */,
+				8E526FA72C944DF400EC3ECA /* UsersModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,9 +232,11 @@
 				8E4DFF0C2C8EDB0E004EE5FF /* GroupsViewModel.swift in Sources */,
 				8E98FAAE2C8B2A8900D9FB3C /* WebView.swift in Sources */,
 				8E4DFF0A2C8ED9B3004EE5FF /* GroupsModel.swift in Sources */,
+				8E526FAA2C944EF700EC3ECA /* UsersViewModel.swift in Sources */,
 				8E31CB812C901D1C004A86C0 /* PhotosViewModel.swift in Sources */,
 				8E08E2272C93216D0047A12E /* ProfileView.swift in Sources */,
 				8E4DFF082C8ED27C004EE5FF /* FriendsView.swift in Sources */,
+				8E526FA82C944DF400EC3ECA /* UsersModel.swift in Sources */,
 				8E4DFF0E2C8EDB9E004EE5FF /* GroupsView.swift in Sources */,
 				8E98FAB02C8B2AA800D9FB3C /* LoginViewModel.swift in Sources */,
 				8E98FA962C8B290300D9FB3C /* VkontakteNetworkApp.swift in Sources */,
