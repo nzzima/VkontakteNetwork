@@ -9,10 +9,10 @@ import SwiftUI
 
 
 struct ContentView: View {
+    @EnvironmentObject var dataSource: DataSource
     var body: some View {
         LoginView()
             .ignoresSafeArea(.all)
-            .preferredColorScheme(.dark)
     }
 }
 

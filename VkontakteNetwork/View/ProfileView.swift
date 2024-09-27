@@ -10,7 +10,7 @@ import SDWebImage
 import SDWebImageSwiftUI
 
 struct ProfileView: View {
-
+    @EnvironmentObject var dataSource: DataSource
     @EnvironmentObject var loginViewModel: LoginViewModel
     @ObservedObject var usersViewModel = UsersViewModel()
     @State var users = [User]()

@@ -10,7 +10,7 @@ import SDWebImage
 import SDWebImageSwiftUI
 
 struct GroupsView: View {
-    
+    @EnvironmentObject var dataSource: DataSource
     @EnvironmentObject var loginViewModel: LoginViewModel
     @ObservedObject var groupsViewModel = GroupsViewModel()
     @State var groups = [Group]()

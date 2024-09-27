@@ -10,7 +10,7 @@ import SDWebImage
 import SDWebImageSwiftUI
 
 struct PhotosView: View {
-    
+    @EnvironmentObject var dataSource: DataSource
     @EnvironmentObject var loginViewModel: LoginViewModel
     @ObservedObject var photosViewModel = PhotosViewModel()
     @State var photos = [Photo]()

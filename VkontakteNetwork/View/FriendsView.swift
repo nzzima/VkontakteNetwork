@@ -10,13 +10,15 @@ import SDWebImage
 import SDWebImageSwiftUI
 
 struct FriendsView: View {
-    
+    @EnvironmentObject var dataSource: DataSource
     @EnvironmentObject var loginViewModel: LoginViewModel
     @ObservedObject var friendsViewModel = FriendsViewModel()
     @State var friends = [Friend]()
     
     var body: some View {
         ZStack {
+            Color(dataSource.selectedTheme.primaryColor)
+                .ignoresSafeArea()
             ScrollView(.vertical) {
                 Text("Friends")
                 LazyVStack {
@@ -26,8 +28,9 @@ struct FriendsView: View {
                 }
                 .padding(10)
             }
+            .padding(.top, 1)
         }
-        .padding(.top, 1)
+        //.padding(.top, 1)
         .padding(.bottom, 15)
         .onAppear{
             friendsViewModel.getFriends(token: loginViewModel.token) {friends in
@@ -43,6 +46,7 @@ struct FriendsView: View {
 }
 
 struct FriendItem: View {
+    @EnvironmentObject var dataSource: DataSource
     var name: String
     var surname: String
     var photo: String
@@ -57,8 +61,10 @@ struct FriendItem: View {
             VStack(alignment: .leading) {
                 Text(name)
                     .font(.system(size: 18))
+                    .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
             }
             Text(surname)
+                .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
             if (online == 1) {
                 Text("Online").font(.system(size: 10)).foregroundStyle(.green)
             } else {

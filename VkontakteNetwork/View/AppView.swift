@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AppView: View {
+    @EnvironmentObject var dataSource: DataSource
     @State var selectTab = "Friends"
     let tabs = ["Friends","Groups","Photos","Profile"]
     
@@ -38,12 +39,13 @@ struct AppView: View {
             .padding(.top, 15)
             .padding(.bottom, 15)
             .frame(maxWidth: .infinity)
-            .background(Color("MainBG"))
+            .background(Color(dataSource.selectedTheme.secondaryColor))
         }
     }
 }
 
 struct TabBarItem: View {
+    @EnvironmentObject var dataSource: DataSource
     @State var tab: String
     @Binding var selected: String
     var body: some View {
@@ -83,7 +85,7 @@ struct TabBarItem: View {
             .padding(.vertical, 5)
             .padding(.horizontal, 17)
             .opacity(selected == tab ? 1 : 0.7)
-            .background(selected == tab ? .white : Color("MainBG"))
+            .background(selected == tab ? .white : Color(dataSource.selectedTheme.secondaryColor))
             .clipShape(Capsule())
         }
     }

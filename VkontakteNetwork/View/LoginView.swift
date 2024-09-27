@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    
+    @EnvironmentObject var dataSource: DataSource
     @ObservedObject var loginViewModel = LoginViewModel()
     
     var body: some View {
