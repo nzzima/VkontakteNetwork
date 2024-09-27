@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8E08E2272C93216D0047A12E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E08E2262C93216D0047A12E /* ProfileView.swift */; };
+		8E10356F2CA6CCCD008F6539 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E10356E2CA6CCCD008F6539 /* Theme.swift */; };
+		8E1035712CA6CD41008F6539 /* ThemeDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1035702CA6CD41008F6539 /* ThemeDefinitions.swift */; };
 		8E31CB812C901D1C004A86C0 /* PhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31CB802C901D1C004A86C0 /* PhotosViewModel.swift */; };
 		8E31CB832C901D32004A86C0 /* PhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31CB822C901D32004A86C0 /* PhotosModel.swift */; };
 		8E31CB852C901F29004A86C0 /* PhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31CB842C901F29004A86C0 /* PhotosView.swift */; };
@@ -34,6 +36,8 @@
 
 /* Begin PBXFileReference section */
 		8E08E2262C93216D0047A12E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		8E10356E2CA6CCCD008F6539 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		8E1035702CA6CD41008F6539 /* ThemeDefinitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeDefinitions.swift; sourceTree = "<group>"; };
 		8E31CB802C901D1C004A86C0 /* PhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewModel.swift; sourceTree = "<group>"; };
 		8E31CB822C901D32004A86C0 /* PhotosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosModel.swift; sourceTree = "<group>"; };
 		8E31CB842C901F29004A86C0 /* PhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosView.swift; sourceTree = "<group>"; };
@@ -70,6 +74,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E10356D2CA6CCC2008F6539 /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				8E10356E2CA6CCCD008F6539 /* Theme.swift */,
+				8E1035702CA6CD41008F6539 /* ThemeDefinitions.swift */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
 		8E98FA892C8B290300D9FB3C = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +103,7 @@
 		8E98FA942C8B290300D9FB3C /* VkontakteNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				8E10356D2CA6CCC2008F6539 /* Themes */,
 				8E98FAA82C8B29FB00D9FB3C /* Model */,
 				8E98FAA72C8B29F400D9FB3C /* View */,
 				8E98FAA62C8B29E800D9FB3C /* ViewModel */,
@@ -229,6 +243,7 @@
 				8E98FA982C8B290300D9FB3C /* ContentView.swift in Sources */,
 				8E31CB852C901F29004A86C0 /* PhotosView.swift in Sources */,
 				8E98FAB42C8B2ADF00D9FB3C /* FriendsModel.swift in Sources */,
+				8E1035712CA6CD41008F6539 /* ThemeDefinitions.swift in Sources */,
 				8E4DFF0C2C8EDB0E004EE5FF /* GroupsViewModel.swift in Sources */,
 				8E98FAAE2C8B2A8900D9FB3C /* WebView.swift in Sources */,
 				8E4DFF0A2C8ED9B3004EE5FF /* GroupsModel.swift in Sources */,
@@ -238,6 +253,7 @@
 				8E4DFF082C8ED27C004EE5FF /* FriendsView.swift in Sources */,
 				8E526FA82C944DF400EC3ECA /* UsersModel.swift in Sources */,
 				8E4DFF0E2C8EDB9E004EE5FF /* GroupsView.swift in Sources */,
+				8E10356F2CA6CCCD008F6539 /* Theme.swift in Sources */,
 				8E98FAB02C8B2AA800D9FB3C /* LoginViewModel.swift in Sources */,
 				8E98FA962C8B290300D9FB3C /* VkontakteNetworkApp.swift in Sources */,
 				8E98FAB22C8B2AC300D9FB3C /* FriendsViewModel.swift in Sources */,
