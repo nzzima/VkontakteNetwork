@@ -9,7 +9,6 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @EnvironmentObject var dataSource: DataSource
     var body: some View {
         LoginView()
             .ignoresSafeArea(.all)
@@ -18,4 +17,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(DataSource())
 }

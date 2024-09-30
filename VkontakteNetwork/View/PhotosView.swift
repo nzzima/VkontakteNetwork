@@ -18,8 +18,11 @@ struct PhotosView: View {
     
     var body: some View {
         ZStack {
+            Color(dataSource.selectedTheme.primaryColor)
+                .ignoresSafeArea()
             ScrollView(.vertical) {
                 Text("Photos")
+                    .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
                 LazyVStack {
                     ForEach(photos, id: \.self) { photo in
                         PhotoItem(surl: photo.sizes[0].url)
@@ -27,8 +30,8 @@ struct PhotosView: View {
                 }
                 .padding(10)
             }
+            .padding(.top, 1)
         }
-        .padding(.top, 1)
         .padding(.bottom, 15)
         .onAppear{
             photosViewModel.getPhotos(token: loginViewModel.token) {photos in
@@ -41,6 +44,7 @@ struct PhotosView: View {
 
 #Preview {
     PhotosView()
+        .environmentObject(DataSource())
 }
 
 struct PhotoItem: View {

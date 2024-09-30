@@ -17,8 +17,11 @@ struct GroupsView: View {
     
     var body: some View {
         ZStack {
+            Color(dataSource.selectedTheme.primaryColor)
+                .ignoresSafeArea()
             ScrollView(.vertical) {
                 Text("Groups")
+                    .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
                 LazyVStack {
                     ForEach(groups, id: \.self) { group in
                             GroupItem(name: group.name, photo: group.photo)
@@ -26,8 +29,8 @@ struct GroupsView: View {
                 }
                 .padding(10)
             }
+            .padding(.top, 1)
         }
-        .padding(.top, 1)
         .padding(.bottom, 15)
         .onAppear{
             groupsViewModel.getGroups(token: loginViewModel.token) {groups in
@@ -40,9 +43,11 @@ struct GroupsView: View {
 
 #Preview {
     GroupsView()
+        .environmentObject(DataSource())
 }
 
 struct GroupItem: View {
+    @EnvironmentObject var dataSource: DataSource
     var name: String
     var photo: String
     
@@ -55,6 +60,7 @@ struct GroupItem: View {
             VStack(alignment: .leading) {
                 Text(name)
                     .font(.system(size: 18))
+                    .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
                     .padding(.bottom, 2)
             }
         }

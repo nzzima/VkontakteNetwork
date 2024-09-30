@@ -11,17 +11,32 @@ import SDWebImageSwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var dataSource: DataSource
+    @Environment(\.presentationMode) private var presentationMode
     @EnvironmentObject var loginViewModel: LoginViewModel
     @ObservedObject var usersViewModel = UsersViewModel()
     @State var users = [User]()
     
     var body: some View {
         ZStack {
+            Color(dataSource.selectedTheme.primaryColor)
+                .ignoresSafeArea()
             ScrollView(.vertical) {
                 Text("Profile")
+                    .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
                 LazyVStack {
                     ForEach(users, id: \.self) { user in
                         UserItem(name: user.firstName, surname: user.lastName, photo: user.photo)
+                    }
+                    ForEach(0..<ThemeManager.themes.count, id: \.self) { theme in
+                        Button(ThemeManager.themes[theme].themeName) {
+                            dataSource.selectedThemeAs = theme
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                        .padding()
+                        .background(Color.green)
+                        .clipShape(Capsule())
+                        .foregroundStyle(Color.black)
+                        
                     }
                 }
             }
@@ -37,9 +52,11 @@ struct ProfileView: View {
 
 #Preview {
     ProfileView()
+        .environmentObject(DataSource())
 }
 
 struct UserItem: View {
+    @EnvironmentObject var dataSource: DataSource
     var name: String
     var surname: String
     var photo: String
@@ -49,9 +66,11 @@ struct UserItem: View {
             HStack {
                 Text(name)
                     .font(.system(size: 18))
+                    .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
                     .fontWeight(.black)
                 Text(surname)
                     .font(.system(size: 18))
+                    .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
                     .fontWeight(.black)
             }
             .padding(.top, 20)

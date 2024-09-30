@@ -21,6 +21,7 @@ struct FriendsView: View {
                 .ignoresSafeArea()
             ScrollView(.vertical) {
                 Text("Friends")
+                    .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
                 LazyVStack {
                     ForEach(friends, id: \.self) { friend in
                         FriendItem(name: friend.firstName, surname: friend.lastName, photo: friend.photo, online: friend.online)
@@ -30,7 +31,6 @@ struct FriendsView: View {
             }
             .padding(.top, 1)
         }
-        //.padding(.top, 1)
         .padding(.bottom, 15)
         .onAppear{
             friendsViewModel.getFriends(token: loginViewModel.token) {friends in
@@ -43,6 +43,7 @@ struct FriendsView: View {
 
 #Preview {
     FriendsView()
+        .environmentObject(DataSource())
 }
 
 struct FriendItem: View {

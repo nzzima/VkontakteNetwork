@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct LoginView: View {
-    @EnvironmentObject var dataSource: DataSource
     @ObservedObject var loginViewModel = LoginViewModel()
     
     var body: some View {
@@ -23,4 +22,5 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
+        .environmentObject(DataSource())
 }
