@@ -15,7 +15,16 @@ struct FriendsView: View {
     @ObservedObject var friendsViewModel = FriendsViewModel()
     @State var friends = [Friend]()
     
+    //@Binding var isPresented: Bool
+    @EnvironmentObject var manager: CoreDataManager
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(sortDescriptors: []) private var friendsCore: FetchedResults<FriendCore>
+    
     var body: some View {
+        //let _ = self.manager.deleteAllCoreData(entity: "FriendCore")
+        ForEach(friends, id: \.self) { friend in
+            let _ = self.manager.saveFriend(photo: friend.photo, firstName: friend.firstName, lastName: friend.lastName, status: friend.online)
+        }
         ZStack {
             Color(dataSource.selectedTheme.primaryColor)
                 .ignoresSafeArea()
@@ -23,8 +32,27 @@ struct FriendsView: View {
                 Text("Friends")
                     .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
                 LazyVStack {
-                    ForEach(friends, id: \.self) { friend in
-                        FriendItem(name: friend.firstName, surname: friend.lastName, photo: friend.photo, online: friend.online)
+                    ForEach(friendsCore, id: \.self) { friendCore in
+                        HStack {
+                            WebImage(url: URL(string: friendCore.photo ?? ""))
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                .clipShape(Circle())
+                            VStack(alignment: .trailing) {
+                                Text(friendCore.firstName ?? "")
+                                    .font(.system(size: 18))
+                                    .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
+                            }
+                            Text(friendCore.lastName ?? "")
+                                .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
+                            if (friendCore.status == 1) {
+                                Text("Online").font(.system(size: 10)).foregroundStyle(.green)
+                            } else {
+                                Text("Offline").font(.system(size: 10)).foregroundStyle(.gray)
+                            }
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.bottom, 8)
                     }
                 }
                 .padding(10)
@@ -46,7 +74,7 @@ struct FriendsView: View {
         .environmentObject(DataSource())
 }
 
-struct FriendItem: View {
+struct FriendItemCore: View {
     @EnvironmentObject var dataSource: DataSource
     var name: String
     var surname: String

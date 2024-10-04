@@ -16,7 +16,7 @@ class FriendsViewModel: ObservableObject {
             "access_token": token,
             "fields": "photo_50,online",
             "v": "5.199",
-            "count": 200
+            "count": 5
         ] as [String : AnyObject]
         
         AF.request(url, method: .post, parameters: params).response {result  in
