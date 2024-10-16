@@ -14,17 +14,22 @@ struct FriendsView: View {
     @EnvironmentObject var loginViewModel: LoginViewModel
     @ObservedObject var friendsViewModel = FriendsViewModel()
     @State var friends = [Friend]()
+    @State var friendModels: [Friend] = []
     
-    //@Binding var isPresented: Bool
     @EnvironmentObject var manager: CoreDataManager
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(sortDescriptors: []) private var friendsCore: FetchedResults<FriendCore>
+    @FetchRequest(sortDescriptors: [])
+    private var friendsCore: FetchedResults<FriendCore>
     
     var body: some View {
-        //let _ = self.manager.deleteAllCoreData(entity: "FriendCore")
+        //let _ = self.manager.deleteAllCoreData() //Очистка CoreData
+        
         ForEach(friends, id: \.self) { friend in
-            let _ = self.manager.saveFriend(photo: friend.photo, firstName: friend.firstName, lastName: friend.lastName, status: friend.online)
+            let _ = addNewFriend(photo: friend.photo, firstname: friend.firstName, lastname: friend.lastName, online: friend.online)
         }
+        
+        let _ = print("Already \(friendsCore.count) saved!")
+        
         ZStack {
             Color(dataSource.selectedTheme.primaryColor)
                 .ignoresSafeArea()
@@ -67,6 +72,10 @@ struct FriendsView: View {
             }
         }
     }
+    func addNewFriend(photo: String, firstname: String, lastname: String, online: Int64) -> Void {
+        let friendModel = Friend(photo: photo, firstname: firstname, lastname: lastname, online: online)
+        CoreDataManager.shared.saveFriend(friendModel: friendModel)
+    }
 }
 
 #Preview {
@@ -74,33 +83,33 @@ struct FriendsView: View {
         .environmentObject(DataSource())
 }
 
-struct FriendItemCore: View {
-    @EnvironmentObject var dataSource: DataSource
-    var name: String
-    var surname: String
-    var photo: String
-    var online: Int
-    
-    var body: some View{
-        HStack{
-            WebImage(url: URL(string: photo))
-                .resizable()
-                .frame(width: 50, height: 50)
-                .clipShape(Circle())
-            VStack(alignment: .leading) {
-                Text(name)
-                    .font(.system(size: 18))
-                    .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
-            }
-            Text(surname)
-                .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
-            if (online == 1) {
-                Text("Online").font(.system(size: 10)).foregroundStyle(.green)
-            } else {
-                Text("Offline").font(.system(size: 10)).foregroundStyle(.gray)
-            }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.bottom, 8)
-    }
-}
+//struct FriendItemCore: View {
+//    @EnvironmentObject var dataSource: DataSource
+//    var name: String
+//    var surname: String
+//    var photo: String
+//    var online: Int
+//    
+//    var body: some View{
+//        HStack{
+//            WebImage(url: URL(string: photo))
+//                .resizable()
+//                .frame(width: 50, height: 50)
+//                .clipShape(Circle())
+//            VStack(alignment: .leading) {
+//                Text(name)
+//                    .font(.system(size: 18))
+//                    .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
+//            }
+//            Text(surname)
+//                .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
+//            if (online == 1) {
+//                Text("Online").font(.system(size: 10)).foregroundStyle(.green)
+//            } else {
+//                Text("Offline").font(.system(size: 10)).foregroundStyle(.gray)
+//            }
+//        }
+//        .frame(maxWidth: .infinity, alignment: .leading)
+//        .padding(.bottom, 8)
+//    }
+//}

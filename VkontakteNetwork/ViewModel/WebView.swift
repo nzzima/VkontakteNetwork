@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-import WebKit
+@preconcurrency import WebKit
 
 struct WebView: UIViewRepresentable {
     

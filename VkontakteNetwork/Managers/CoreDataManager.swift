@@ -10,7 +10,7 @@ import CoreData
 
 class CoreDataManager: NSObject, ObservableObject {
     
-    @Published var friendsCore: [FriendCore] = [FriendCore]()
+    static let shared = CoreDataManager()
     let persistentContainer: NSPersistentContainer
     
     override init() {
@@ -22,12 +22,12 @@ class CoreDataManager: NSObject, ObservableObject {
         }
     }
     
-    func saveFriend(photo: String, firstName: String, lastName: String, status: Int) {
+    func saveFriend(friendModel: Friend) {
         let friend = FriendCore(context: persistentContainer.viewContext)
-        friend.firstName = firstName
-        friend.lastName = lastName
-        friend.photo = photo
-        friend.status = Int64(status)
+        friend.firstName = friendModel.firstName
+        friend.lastName = friendModel.lastName
+        friend.photo = friendModel.photo
+        friend.status = Int64(friendModel.online)
         
         do {
             try persistentContainer.viewContext.save()
@@ -37,17 +37,10 @@ class CoreDataManager: NSObject, ObservableObject {
         }
     }
     
-    func deleteAllCoreData(entity: String) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-        fetchRequest.returnsObjectsAsFaults = false
-        do {
-            let results = try persistentContainer.viewContext.fetch(fetchRequest)
-            for object in results {
-                guard let objectData = object as? NSManagedObject else {continue}
-                persistentContainer.viewContext.delete(objectData)
-            }
-        } catch let error {
-            print("Delete all data in \(entity) failed:", error)
-        }
+    func deleteAllCoreData() {
+        let fetchRequest1: NSFetchRequest<NSFetchRequestResult> = FriendCore.fetchRequest()
+              let batchDeleteRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest1)
+        _ = try? persistentContainer.viewContext.execute(batchDeleteRequest1)
+        try? persistentContainer.viewContext.save()
     }
 }
