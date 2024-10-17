@@ -91,7 +91,7 @@ struct FriendsView: View {
     
     func refreshing() {
         print("Refresh START!")
-        ForEach(friends, id: \.self) { friend in
+        for friend in friends {
             let _ = updateFriend(photo: friend.photo, firstname: friend.firstName, lastname: friend.lastName, online: friend.online)
         }
         print("Refresh FINISH!")
