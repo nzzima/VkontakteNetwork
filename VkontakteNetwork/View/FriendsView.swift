@@ -23,11 +23,15 @@ struct FriendsView: View {
     
     var body: some View {
         //let _ = self.manager.deleteAllCoreData() //Очистка CoreData
-        
-        ForEach(friends, id: \.self) { friend in
-            let _ = addNewFriend(photo: friend.photo, firstname: friend.firstName, lastname: friend.lastName, online: friend.online)
+        if friendsCore.isEmpty {
+            ForEach(friends, id: \.self) { friend in
+                let _ = addNewFriend(photo: friend.photo, firstname: friend.firstName, lastname: friend.lastName, online: friend.online)
+            }
+        } else {
+            ForEach(friends, id: \.self) { friend in
+                let _ = updateFriend(photo: friend.photo, firstname: friend.firstName, lastname: friend.lastName, online: friend.online)
+            }
         }
-        
         let _ = print("Already \(friendsCore.count) saved!")
         
         ZStack {
@@ -71,10 +75,26 @@ struct FriendsView: View {
                 print(friends) //Friends information in console
             }
         }
+        .refreshable {
+            refreshing()
+        }
     }
-    func addNewFriend(photo: String, firstname: String, lastname: String, online: Int64) -> Void {
+    func addNewFriend(photo: String, firstname: String, lastname: String, online: Int64) {
         let friendModel = Friend(photo: photo, firstname: firstname, lastname: lastname, online: online)
         CoreDataManager.shared.saveFriend(friendModel: friendModel)
+    }
+    
+    func updateFriend(photo: String, firstname: String, lastname: String, online: Int64) {
+        let friendModel = Friend(photo: photo, firstname: firstname, lastname: lastname, online: online)
+        CoreDataManager.shared.updateFriend(friendModel: friendModel)
+    }
+    
+    func refreshing() {
+        print("Refresh START!")
+        ForEach(friends, id: \.self) { friend in
+            let _ = updateFriend(photo: friend.photo, firstname: friend.firstName, lastname: friend.lastName, online: friend.online)
+        }
+        print("Refresh FINISH!")
     }
 }
 
