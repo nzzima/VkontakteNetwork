@@ -44,7 +44,7 @@ struct ProfileView: View {
         .onAppear{
             usersViewModel.getUsers(token: loginViewModel.token) {users in
                 self.users = users
-                print(users) //Users information in console
+                //print(users) //Users information in console
             }
         }
     }

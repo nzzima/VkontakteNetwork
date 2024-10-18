@@ -36,7 +36,7 @@ struct PhotosView: View {
         .onAppear{
             photosViewModel.getPhotos(token: loginViewModel.token) {photos in
                 self.photos = photos
-                print(photos) //Photos information in console
+                //print(photos) //Photos information in console
             }
         }
     }

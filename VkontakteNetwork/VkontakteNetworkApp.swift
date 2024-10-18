@@ -9,12 +9,11 @@ import SwiftUI
 
 @main
 struct VkontakteNetworkApp: App {
-    @StateObject private var manager: CoreDataManager = CoreDataManager()
+    @StateObject var manager = CoreDataManager.shared
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(DataSource())
-                .environmentObject(manager)
                 .environment(\.managedObjectContext, manager.persistentContainer.viewContext)
         }
     }

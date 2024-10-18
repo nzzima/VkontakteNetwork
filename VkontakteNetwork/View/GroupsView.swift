@@ -35,7 +35,7 @@ struct GroupsView: View {
         .onAppear{
             groupsViewModel.getGroups(token: loginViewModel.token) {groups in
                 self.groups = groups
-                print(groups) //Groups information in console
+                //print(groups) //Groups information in console
             }
         }
     }

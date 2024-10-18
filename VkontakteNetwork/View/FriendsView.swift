@@ -14,7 +14,6 @@ struct FriendsView: View {
     @EnvironmentObject var loginViewModel: LoginViewModel
     @ObservedObject var friendsViewModel = FriendsViewModel()
     @State var friends = [Friend]()
-    @State var friendModels: [Friend] = []
     
     @EnvironmentObject var manager: CoreDataManager
     @Environment(\.managedObjectContext) private var viewContext
@@ -22,15 +21,12 @@ struct FriendsView: View {
     private var friendsCore: FetchedResults<FriendCore>
     
     var body: some View {
-        //let _ = self.manager.deleteAllCoreData() //Очистка CoreData
         if friendsCore.isEmpty {
             ForEach(friends, id: \.self) { friend in
                 let _ = addNewFriend(photo: friend.photo, firstname: friend.firstName, lastname: friend.lastName, online: friend.online)
             }
         } else {
-            ForEach(friends, id: \.self) { friend in
-                let _ = updateFriend(photo: friend.photo, firstname: friend.firstName, lastname: friend.lastName, online: friend.online)
-            }
+            let _ = updateFriends(friends: friends)
         }
         let _ = print("Already \(friendsCore.count) saved!")
         
@@ -42,26 +38,7 @@ struct FriendsView: View {
                     .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
                 LazyVStack {
                     ForEach(friendsCore, id: \.self) { friendCore in
-                        HStack {
-                            WebImage(url: URL(string: friendCore.photo ?? ""))
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                                .clipShape(Circle())
-                            VStack(alignment: .trailing) {
-                                Text(friendCore.firstName ?? "")
-                                    .font(.system(size: 18))
-                                    .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
-                            }
-                            Text(friendCore.lastName ?? "")
-                                .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
-                            if (friendCore.status == 1) {
-                                Text("Online").font(.system(size: 10)).foregroundStyle(.green)
-                            } else {
-                                Text("Offline").font(.system(size: 10)).foregroundStyle(.gray)
-                            }
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.bottom, 8)
+                        FriendItemCore(friendCore: friendCore, name: friendCore.firstName ?? "", surname: friendCore.lastName ?? "", photo: friendCore.photo ?? "", online: Int(friendCore.status))
                     }
                 }
                 .padding(10)
@@ -72,7 +49,7 @@ struct FriendsView: View {
         .onAppear{
             friendsViewModel.getFriends(token: loginViewModel.token) {friends in
                 self.friends = friends
-                print(friends) //Friends information in console
+                //print(friends) //Friends information in console
             }
         }
         .refreshable {
@@ -84,16 +61,13 @@ struct FriendsView: View {
         CoreDataManager.shared.saveFriend(friendModel: friendModel)
     }
     
-    func updateFriend(photo: String, firstname: String, lastname: String, online: Int64) {
-        let friendModel = Friend(photo: photo, firstname: firstname, lastname: lastname, online: online)
-        CoreDataManager.shared.updateFriend(friendModel: friendModel)
+    func updateFriends(friends: [Friend]) {
+        CoreDataManager.shared.updateFriends(newFriends: friends)
     }
     
     func refreshing() {
         print("Refresh START!")
-        for friend in friends {
-            let _ = updateFriend(photo: friend.photo, firstname: friend.firstName, lastname: friend.lastName, online: friend.online)
-        }
+        let _ = updateFriends(friends: friends)
         print("Refresh FINISH!")
     }
 }
@@ -103,33 +77,38 @@ struct FriendsView: View {
         .environmentObject(DataSource())
 }
 
-//struct FriendItemCore: View {
-//    @EnvironmentObject var dataSource: DataSource
-//    var name: String
-//    var surname: String
-//    var photo: String
-//    var online: Int
-//    
-//    var body: some View{
-//        HStack{
-//            WebImage(url: URL(string: photo))
-//                .resizable()
-//                .frame(width: 50, height: 50)
-//                .clipShape(Circle())
-//            VStack(alignment: .leading) {
-//                Text(name)
-//                    .font(.system(size: 18))
-//                    .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
-//            }
-//            Text(surname)
-//                .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
-//            if (online == 1) {
-//                Text("Online").font(.system(size: 10)).foregroundStyle(.green)
-//            } else {
-//                Text("Offline").font(.system(size: 10)).foregroundStyle(.gray)
-//            }
-//        }
-//        .frame(maxWidth: .infinity, alignment: .leading)
-//        .padding(.bottom, 8)
-//    }
-//}
+struct FriendItemCore: View {
+    @EnvironmentObject var dataSource: DataSource
+    var friendCore: FriendCore
+    var name: String
+    var surname: String
+    var photo: String
+    var online: Int
+    
+    var body: some View{
+        NavigationView {
+            NavigationLink(destination: FriendProfileView(friendCore: friendCore)) {
+                HStack{
+                    WebImage(url: URL(string: photo))
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .clipShape(Circle())
+                    VStack(alignment: .leading) {
+                        Text(name)
+                            .font(.system(size: 18))
+                            .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
+                    }
+                    Text(surname)
+                        .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
+                    if (online == 1) {
+                        Text("Online").font(.system(size: 10)).foregroundStyle(.green)
+                    } else {
+                        Text("Offline").font(.system(size: 10)).foregroundStyle(.gray)
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.bottom, 8)
+            }
+        }
+    }
+}

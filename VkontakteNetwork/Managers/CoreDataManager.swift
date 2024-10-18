@@ -7,13 +7,14 @@
 
 import Foundation
 import CoreData
+import SwiftUICore
 
-class CoreDataManager: NSObject, ObservableObject {
+class CoreDataManager: ObservableObject {
     
     static let shared = CoreDataManager()
     let persistentContainer: NSPersistentContainer
     
-    override init() {
+    init() {
         persistentContainer = NSPersistentContainer(name: "FriendCoreDataModel")
         persistentContainer.loadPersistentStores { (description, error) in
             if let error = error {
@@ -37,22 +38,27 @@ class CoreDataManager: NSObject, ObservableObject {
         }
     }
     
-    func updateFriend(friendModel: Friend) {
+    func takeFriend(lastName: String) -> FriendCore? {
         let fetchRequest: NSFetchRequest<FriendCore> = FriendCore.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "lastName == %@", friendModel.lastName)
+        fetchRequest.predicate = NSPredicate(format: "lastName == %@", lastName)
         let result = try? persistentContainer.viewContext.fetch(fetchRequest)
-        
-        guard let friend = result?.first else { return }
-        
-        friend.firstName = friendModel.firstName
-        friend.photo = friendModel.photo
-        friend.status = Int64(friendModel.online)
+        let friend = result?.first
+        return friend
+    }
+    
+    func updateFriends(newFriends: [Friend]) {
+        for friend in newFriends {
+            let takeFriend = takeFriend(lastName: friend.lastName)
+            takeFriend?.firstName = friend.firstName
+            takeFriend?.photo = friend.photo
+            takeFriend?.status = Int64(friend.online)
+        }
         
         do {
             try persistentContainer.viewContext.save()
-            print("Friend updated in core!")
+            print("Friends updated in core!")
         } catch {
-            print("Failed to update friend \(error)")
+            print("Failed to update friends in core: \(error)")
         }
     }
     

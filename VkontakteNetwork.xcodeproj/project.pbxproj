@@ -35,6 +35,7 @@
 		8E98FAB22C8B2AC300D9FB3C /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98FAB12C8B2AC300D9FB3C /* FriendsViewModel.swift */; };
 		8E98FAB42C8B2ADF00D9FB3C /* FriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98FAB32C8B2ADF00D9FB3C /* FriendsModel.swift */; };
 		8E98FAB72C8B30FA00D9FB3C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 8E98FAB62C8B30FA00D9FB3C /* SDWebImageSwiftUI */; };
+		8EA2D6452CC23E89009EE38E /* FriendProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA2D6442CC23E89009EE38E /* FriendProfileView.swift */; };
 		8EEEA3D62C91C48200197C55 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8EEEA3D52C91C48200197C55 /* README.md */; };
 		8EF09BF22CAABE7E00936CD6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF09BF12CAABE7E00936CD6 /* CoreDataManager.swift */; };
 		8EF09BFB2CAAD69600936CD6 /* FriendCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8EF09BF92CAAD69600936CD6 /* FriendCoreDataModel.xcdatamodeld */; };
@@ -68,6 +69,7 @@
 		8E98FAAF2C8B2AA800D9FB3C /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8E98FAB12C8B2AC300D9FB3C /* FriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = "<group>"; };
 		8E98FAB32C8B2ADF00D9FB3C /* FriendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsModel.swift; sourceTree = "<group>"; };
+		8EA2D6442CC23E89009EE38E /* FriendProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileView.swift; sourceTree = "<group>"; };
 		8EEEA3D52C91C48200197C55 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8EF09BF12CAABE7E00936CD6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		8EF09BFA2CAAD69600936CD6 /* FriendCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FriendCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				8E4DFF0D2C8EDB9E004EE5FF /* GroupsView.swift */,
 				8E31CB842C901F29004A86C0 /* PhotosView.swift */,
 				8E08E2262C93216D0047A12E /* ProfileView.swift */,
+				8EA2D6442CC23E89009EE38E /* FriendProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				8E5461F92CB0060F0057B885 /* FriendCore+CoreDataProperties.swift in Sources */,
 				8E10356F2CA6CCCD008F6539 /* Theme.swift in Sources */,
 				8E98FAB02C8B2AA800D9FB3C /* LoginViewModel.swift in Sources */,
+				8EA2D6452CC23E89009EE38E /* FriendProfileView.swift in Sources */,
 				8E98FA962C8B290300D9FB3C /* VkontakteNetworkApp.swift in Sources */,
 				8E98FAB22C8B2AC300D9FB3C /* FriendsViewModel.swift in Sources */,
 				8E98FAAC2C8B2A3800D9FB3C /* LoginView.swift in Sources */,
