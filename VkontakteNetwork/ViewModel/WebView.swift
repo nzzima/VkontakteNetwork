@@ -22,7 +22,7 @@ struct WebView: UIViewRepresentable {
         urlComponents.path = "/authorize"
         
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: "52265751"),
+            URLQueryItem(name: "client_id", value: "52545623"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "response_type", value: "token"),

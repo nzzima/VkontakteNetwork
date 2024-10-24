@@ -38,22 +38,30 @@ class CoreDataManager: ObservableObject {
         }
     }
     
-    func takeFriend(lastName: String) -> FriendCore? {
+    func takeFriend(/*lastName: String*/) -> [FriendCore]? {
         let fetchRequest: NSFetchRequest<FriendCore> = FriendCore.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "lastName == %@", lastName)
+        //fetchRequest.predicate = NSPredicate(format: "lastName == %@", lastName)
         let result = try? persistentContainer.viewContext.fetch(fetchRequest)
-        let friend = result?.first
-        return friend
+//        let friend = result?.first
+//        return friend
+        return result
     }
     
     func updateFriends(newFriends: [Friend]) {
-        for friend in newFriends {
-            let takeFriend = takeFriend(lastName: friend.lastName)
-            takeFriend?.firstName = friend.firstName
-            takeFriend?.photo = friend.photo
-            takeFriend?.status = Int64(friend.online)
+        let coreFriends = takeFriend(/*lastName: friend.lastName*/)
+        for coreFriend in coreFriends ?? [] {
+            for friend in newFriends {
+                if coreFriend.lastName == friend.lastName {
+                    coreFriend.firstName = friend.firstName
+                    coreFriend.photo = friend.photo
+                    coreFriend.status = Int64(friend.online)
+                }
+            }
         }
-        
+        saveToCore()
+    }
+    
+    func saveToCore() {
         do {
             try persistentContainer.viewContext.save()
             print("Friends updated in core!")
