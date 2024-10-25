@@ -30,31 +30,6 @@ struct FriendsView: View {
         }
         let _ = print("Already \(friendsCore.count) saved!")
         
-//        ZStack {
-//            Color(dataSource.selectedTheme.primaryColor)
-//                .ignoresSafeArea()
-//            ScrollView(.vertical) {
-//                Text("Friends")
-//                    .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
-//                VStack {
-//                    ForEach(friendsCore, id: \.self) { friendCore in
-//                        FriendItemCore(friendCore: friendCore, name: friendCore.firstName ?? "", surname: friendCore.lastName ?? "", photo: friendCore.photo ?? "", online: Int(friendCore.status))
-//                    }
-//                }
-//                .padding(10)
-//            }
-//            .padding(.top, 1)
-//        }
-//        .padding(.bottom, 15)
-//        .onAppear{
-//            friendsViewModel.getFriends(token: loginViewModel.token) {friends in
-//                self.friends = friends
-//                //print(friends) //Friends information in console
-//            }
-//        }
-//        .refreshable {
-//            refreshing()
-//        }
         ZStack {
             Color(dataSource.selectedTheme.primaryColor)
                 .ignoresSafeArea()
@@ -63,15 +38,17 @@ struct FriendsView: View {
                     NavigationLink(destination: FriendProfileView(friendCore: friendCore)) {
                         FriendItemCore(friendCore: friendCore, name: friendCore.firstName ?? "", surname: friendCore.lastName ?? "", photo: friendCore.photo ?? "", online: Int(friendCore.status))
                     }
-                    .background(Color(dataSource.selectedTheme.primaryColor))
+                    .listRowBackground(Color(dataSource.selectedTheme.primaryColor))
+                    
                 }
+                .navigationTitle("Friends")
                 .listStyle(.grouped)
+                .navigationBarTitleDisplayMode(.inline)
                 .padding(.bottom, 40)
                 .scrollContentBackground(.hidden)
                 .background(Color(dataSource.selectedTheme.primaryColor))
             }
             .padding(.top, 1)
-            .background(Color(dataSource.selectedTheme.primaryColor))
         }
         .onAppear{
             friendsViewModel.getFriends(token: loginViewModel.token) {friends in
@@ -83,6 +60,7 @@ struct FriendsView: View {
         }
 
     }
+    
     func addNewFriend(photo: String, firstname: String, lastname: String, online: Int64) {
         let friendModel = Friend(photo: photo, firstname: firstname, lastname: lastname, online: online)
         CoreDataManager.shared.saveFriend(friendModel: friendModel)
@@ -131,7 +109,7 @@ struct FriendItemCore: View {
                 Text("Offline").font(.system(size: 10)).foregroundStyle(.gray)
             }
         }
-        .background(Color(dataSource.selectedTheme.primaryColor))
+        //.listRowBackground(Color(dataSource.selectedTheme.primaryColor))
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.bottom, 8)
     }
