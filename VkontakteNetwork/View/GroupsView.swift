@@ -24,7 +24,7 @@ struct GroupsView: View {
                     .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
                 LazyVStack {
                     ForEach(groups, id: \.self) { group in
-                            GroupItem(name: group.name, photo: group.photo)
+                        GroupItemCore(name: group.name, photo: group.photo)
                     }
                 }
                 .padding(10)
@@ -46,7 +46,7 @@ struct GroupsView: View {
         .environmentObject(DataSource())
 }
 
-struct GroupItem: View {
+struct GroupItemCore: View {
     @EnvironmentObject var dataSource: DataSource
     var name: String
     var photo: String

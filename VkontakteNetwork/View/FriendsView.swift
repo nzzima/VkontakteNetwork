@@ -36,7 +36,7 @@ struct FriendsView: View {
             NavigationStack {
                 List(friendsCore) { friendCore in
                     NavigationLink(destination: FriendProfileView(friendCore: friendCore)) {
-                        FriendItemCore(friendCore: friendCore, name: friendCore.firstName ?? "", surname: friendCore.lastName ?? "", photo: friendCore.photo ?? "", online: Int(friendCore.status))
+                        FriendItemCore(name: friendCore.firstName ?? "", surname: friendCore.lastName ?? "", photo: friendCore.photo ?? "", online: Int(friendCore.status))
                     }
                     .listRowBackground(Color(dataSource.selectedTheme.primaryColor))
                     
@@ -84,7 +84,6 @@ struct FriendsView: View {
 
 struct FriendItemCore: View {
     @EnvironmentObject var dataSource: DataSource
-    var friendCore: FriendCore
     var name: String
     var surname: String
     var photo: String

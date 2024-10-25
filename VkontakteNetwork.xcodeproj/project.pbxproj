@@ -36,7 +36,6 @@
 		8E98FAB42C8B2ADF00D9FB3C /* FriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98FAB32C8B2ADF00D9FB3C /* FriendsModel.swift */; };
 		8E98FAB72C8B30FA00D9FB3C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 8E98FAB62C8B30FA00D9FB3C /* SDWebImageSwiftUI */; };
 		8EA2D6452CC23E89009EE38E /* FriendProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA2D6442CC23E89009EE38E /* FriendProfileView.swift */; };
-		8EAC20412CCB8F2600A2CA13 /* GroupCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8EAC203F2CCB8F2600A2CA13 /* GroupCoreDataModel.xcdatamodeld */; };
 		8EEEA3D62C91C48200197C55 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8EEEA3D52C91C48200197C55 /* README.md */; };
 		8EF09BF22CAABE7E00936CD6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF09BF12CAABE7E00936CD6 /* CoreDataManager.swift */; };
 		8EF09BFB2CAAD69600936CD6 /* FriendCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8EF09BF92CAAD69600936CD6 /* FriendCoreDataModel.xcdatamodeld */; };
@@ -71,7 +70,6 @@
 		8E98FAB12C8B2AC300D9FB3C /* FriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = "<group>"; };
 		8E98FAB32C8B2ADF00D9FB3C /* FriendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsModel.swift; sourceTree = "<group>"; };
 		8EA2D6442CC23E89009EE38E /* FriendProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileView.swift; sourceTree = "<group>"; };
-		8EAC20402CCB8F2600A2CA13 /* GroupCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GroupCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		8EEEA3D52C91C48200197C55 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8EF09BF12CAABE7E00936CD6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		8EF09BFA2CAAD69600936CD6 /* FriendCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FriendCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -133,7 +131,6 @@
 				8E98FA992C8B290400D9FB3C /* Assets.xcassets */,
 				8E98FA9B2C8B290400D9FB3C /* Preview Content */,
 				8EF09BF92CAAD69600936CD6 /* FriendCoreDataModel.xcdatamodeld */,
-				8EAC203F2CCB8F2600A2CA13 /* GroupCoreDataModel.xcdatamodeld */,
 			);
 			path = VkontakteNetwork;
 			sourceTree = "<group>";
@@ -271,7 +268,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EAC20412CCB8F2600A2CA13 /* GroupCoreDataModel.xcdatamodeld in Sources */,
 				8EF09BFB2CAAD69600936CD6 /* FriendCoreDataModel.xcdatamodeld in Sources */,
 				8E31CB832C901D32004A86C0 /* PhotosModel.swift in Sources */,
 				8E98FA982C8B290300D9FB3C /* ContentView.swift in Sources */,
@@ -538,16 +534,6 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		8EAC203F2CCB8F2600A2CA13 /* GroupCoreDataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				8EAC20402CCB8F2600A2CA13 /* GroupCoreDataModel.xcdatamodel */,
-			);
-			currentVersion = 8EAC20402CCB8F2600A2CA13 /* GroupCoreDataModel.xcdatamodel */;
-			path = GroupCoreDataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		8EF09BF92CAAD69600936CD6 /* FriendCoreDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
