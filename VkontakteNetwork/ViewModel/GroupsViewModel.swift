@@ -9,9 +9,8 @@ import Foundation
 import Alamofire
 
 class GroupsViewModel: ObservableObject {
-    func getGroups(token: String, completion: @escaping ([Group]) -> ()) {
-        let url = "https://api.vk.com/method/groups.get"
-        
+    func getGroups(token: String, completion: @escaping ([Group]) -> Void) {
+        let urlLink = "https://api.vk.com/method/groups.get"
         let params = [
             "access_token": token,
             "extended": 1,
@@ -19,11 +18,9 @@ class GroupsViewModel: ObservableObject {
             "v": "5.199",
             "count": 30
         ] as [String : AnyObject]
-        
-        AF.request(url, method: .post, parameters: params).response {result  in
+        AF.request(urlLink, method: .post, parameters: params).response {result  in
             if let data = result.data {
-                if let groups = try? JSONDecoder().decode(GroupResponse.self, from: data).response.items
-                {
+                if let groups = try? JSONDecoder().decode(GroupResponse.self, from: data).response.items {
                     completion(groups)
                 }
             }

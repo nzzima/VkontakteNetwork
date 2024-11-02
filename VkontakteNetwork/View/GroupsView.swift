@@ -14,7 +14,6 @@ struct GroupsView: View {
     @EnvironmentObject var loginViewModel: LoginViewModel
     @ObservedObject var groupsViewModel = GroupsViewModel()
     @State var groups = [Group]()
-    
     var body: some View {
         ZStack {
             Color(dataSource.selectedTheme.primaryColor)
@@ -32,39 +31,35 @@ struct GroupsView: View {
             .padding(.top, 1)
         }
         .padding(.bottom, 15)
-        .onAppear{
+        .onAppear {
             groupsViewModel.getGroups(token: loginViewModel.token) {groups in
                 self.groups = groups
-                //print(groups) //Groups information in console
             }
         }
     }
 }
-
-#Preview {
-    GroupsView()
-        .environmentObject(DataSource())
-}
-
-struct GroupItemCore: View {
-    @EnvironmentObject var dataSource: DataSource
-    var name: String
-    var photo: String
-    
-    var body: some View{
-        HStack{
-            WebImage(url: URL(string: photo))
-                .resizable()
-                .frame(width: 50, height: 50)
-                .clipShape(Circle())
-            VStack(alignment: .leading) {
-                Text(name)
-                    .font(.system(size: 18))
-                    .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
-                    .padding(.bottom, 2)
-            }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.bottom, 8)
+    #Preview {
+        GroupsView()
+            .environmentObject(DataSource())
     }
-}
+    struct GroupItemCore: View {
+        @EnvironmentObject var dataSource: DataSource
+        var name: String
+        var photo: String
+        var body: some View {
+            HStack {
+                WebImage(url: URL(string: photo))
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .clipShape(Circle())
+                VStack(alignment: .leading) {
+                    Text(name)
+                        .font(.system(size: 18))
+                        .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
+                        .padding(.bottom, 2)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.bottom, 8)
+        }
+    }

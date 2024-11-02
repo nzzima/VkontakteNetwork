@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension FriendCore {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<FriendCore> {
@@ -23,6 +22,4 @@ extension FriendCore {
 
 }
 
-extension FriendCore : Identifiable {
-
-}
+extension FriendCore: Identifiable {}

@@ -18,8 +18,7 @@ struct Groups: Decodable {
 struct Group: Decodable, Hashable {
     var photo: String
     var name: String
-    
-    enum CodingKeys: String, CodingKey{
+    enum CodingKeys: String, CodingKey {
         case name = "name"
         case photo = "photo_50"
     }

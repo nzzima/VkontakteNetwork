@@ -20,21 +20,18 @@ struct Friend: Decodable, Hashable {
     var firstName: String
     var lastName: String
     var online: Int64
-    
-    enum CodingKeys: String, CodingKey{
+    enum CodingKeys: String, CodingKey {
         case firstName = "first_name"
         case lastName = "last_name"
         case photo = "photo_50"
         case online = "online"
     }
-    
     init(photo: String, firstname: String, lastname: String, online: Int64) {
         self.photo = photo
         self.firstName = firstname
         self.lastName = lastname
         self.online = online
     }
-    
     init(friend: FriendCore) {
         self.photo = friend.photo!
         self.firstName = friend.firstName!

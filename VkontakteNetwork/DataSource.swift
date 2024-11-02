@@ -14,13 +14,10 @@ class DataSource: ObservableObject {
             updateTheme()
         }
     }
-    
     init() {
         updateTheme()
     }
-    
     @Published var selectedTheme: Theme = SoftTheme()
-    
     func updateTheme() {
         selectedTheme = ThemeManager.getTheme(selectedThemeAs)
     }

@@ -10,26 +10,22 @@ import CoreData
 import SwiftUICore
 
 class CoreDataManager: ObservableObject {
-    
     static let shared = CoreDataManager()
     let persistentContainer: NSPersistentContainer
-    
     init() {
         persistentContainer = NSPersistentContainer(name: "FriendCoreDataModel")
-        persistentContainer.loadPersistentStores { (description, error) in
+        persistentContainer.loadPersistentStores { (_, error) in
             if let error = error {
                 fatalError("CoreData Store failed! \(error.localizedDescription)")
             }
         }
     }
-    
     func saveFriend(friendModel: Friend) {
         let friend = FriendCore(context: persistentContainer.viewContext)
         friend.firstName = friendModel.firstName
         friend.lastName = friendModel.lastName
         friend.photo = friendModel.photo
         friend.status = Int64(friendModel.online)
-        
         do {
             try persistentContainer.viewContext.save()
             print("Friend saved to core!")
@@ -37,30 +33,22 @@ class CoreDataManager: ObservableObject {
             print("Failed to save friend \(error)")
         }
     }
-    
     func takeFriend(/*lastName: String*/) -> [FriendCore]? {
         let fetchRequest: NSFetchRequest<FriendCore> = FriendCore.fetchRequest()
-        //fetchRequest.predicate = NSPredicate(format: "lastName == %@", lastName)
         let result = try? persistentContainer.viewContext.fetch(fetchRequest)
-//        let friend = result?.first
-//        return friend
         return result
     }
-    
     func updateFriends(newFriends: [Friend]) {
-        let coreFriends = takeFriend(/*lastName: friend.lastName*/)
+        let coreFriends = takeFriend()
         for coreFriend in coreFriends ?? [] {
-            for friend in newFriends {
-                if coreFriend.lastName == friend.lastName {
-                    coreFriend.firstName = friend.firstName
-                    coreFriend.photo = friend.photo
-                    coreFriend.status = Int64(friend.online)
-                }
+            for friend in newFriends where coreFriend.lastName == friend.lastName {
+                coreFriend.firstName = friend.firstName
+                coreFriend.photo = friend.photo
+                coreFriend.status = Int64(friend.online)
             }
         }
         saveToCore()
     }
-    
     func saveToCore() {
         do {
             try persistentContainer.viewContext.save()
@@ -69,7 +57,6 @@ class CoreDataManager: ObservableObject {
             print("Failed to update friends in core: \(error)")
         }
     }
-    
     func deleteAllCoreData() {
         let fetchRequest1: NSFetchRequest<NSFetchRequestResult> = FriendCore.fetchRequest()
               let batchDeleteRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest1)

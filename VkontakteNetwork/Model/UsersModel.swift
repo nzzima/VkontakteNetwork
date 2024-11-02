@@ -16,7 +16,6 @@ struct User: Decodable, Hashable {
     var screenName: String
     var firstName: String
     var lastName: String
-    
     enum CodingKeys: String, CodingKey {
         case photo = "photo_max_orig"
         case screenName = "screen_name"

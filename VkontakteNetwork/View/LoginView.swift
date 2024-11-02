@@ -9,7 +9,6 @@ import SwiftUI
 
 struct LoginView: View {
     @ObservedObject var loginViewModel = LoginViewModel()
-    
     var body: some View {
         if loginViewModel.isLogin {
             AppView()

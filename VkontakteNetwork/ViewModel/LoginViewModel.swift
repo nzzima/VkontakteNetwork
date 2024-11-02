@@ -9,9 +9,8 @@ import UIKit
 
 class LoginViewModel: ObservableObject {
     @Published var isLogin = false
-    
     @Published var token = "" {
-        didSet{
+        didSet {
             isLogin = true
         }
     }

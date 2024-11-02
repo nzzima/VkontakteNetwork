@@ -12,7 +12,6 @@ import SDWebImageSwiftUI
 struct FriendProfileView: View {
     @EnvironmentObject var dataSource: DataSource
     let friendCore: FriendCore
-    
     var body: some View {
         ZStack {
             Color(dataSource.selectedTheme.primaryColor)
@@ -20,7 +19,7 @@ struct FriendProfileView: View {
             ScrollView(.vertical) {
                 Text("Profile")
                     .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
-                LazyVStack{
+                LazyVStack {
                     HStack {
                         Text(friendCore.firstName ?? "")
                             .font(.system(size: 18))

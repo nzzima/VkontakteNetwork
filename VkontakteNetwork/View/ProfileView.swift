@@ -15,7 +15,6 @@ struct ProfileView: View {
     @EnvironmentObject var loginViewModel: LoginViewModel
     @ObservedObject var usersViewModel = UsersViewModel()
     @State var users = [User]()
-    
     var body: some View {
         ZStack {
             Color(dataSource.selectedTheme.primaryColor)
@@ -36,15 +35,13 @@ struct ProfileView: View {
                         .background(Color.green)
                         .clipShape(Capsule())
                         .foregroundStyle(Color.black)
-                        
                     }
                 }
             }
         }
-        .onAppear{
+        .onAppear {
             usersViewModel.getUsers(token: loginViewModel.token) {users in
                 self.users = users
-                //print(users) //Users information in console
             }
         }
     }
@@ -60,9 +57,8 @@ struct UserItem: View {
     var name: String
     var surname: String
     var photo: String
-    
-    var body: some View{
-        LazyVStack{
+    var body: some View {
+        LazyVStack {
             HStack {
                 Text(name)
                     .font(.system(size: 18))

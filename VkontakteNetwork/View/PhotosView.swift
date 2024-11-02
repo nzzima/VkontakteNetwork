@@ -14,8 +14,6 @@ struct PhotosView: View {
     @EnvironmentObject var loginViewModel: LoginViewModel
     @ObservedObject var photosViewModel = PhotosViewModel()
     @State var photos = [Photo]()
-    //var point = 1
-    
     var body: some View {
         ZStack {
             Color(dataSource.selectedTheme.primaryColor)
@@ -25,7 +23,7 @@ struct PhotosView: View {
                     .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
                 LazyVStack {
                     ForEach(photos, id: \.self) { photo in
-                        PhotoItem(surl: photo.sizes[0].url)
+                        PhotoItem(surl: photo.sizes[0].urlLink)
                     }
                 }
                 .padding(10)
@@ -33,10 +31,9 @@ struct PhotosView: View {
             .padding(.top, 1)
         }
         .padding(.bottom, 15)
-        .onAppear{
+        .onAppear {
             photosViewModel.getPhotos(token: loginViewModel.token) {photos in
                 self.photos = photos
-                //print(photos) //Photos information in console
             }
         }
     }
@@ -49,9 +46,8 @@ struct PhotosView: View {
 
 struct PhotoItem: View {
     var surl: String
-    
-    var body: some View{
-        HStack{
+    var body: some View {
+        HStack {
             WebImage(url: URL(string: surl))
         }
         .frame(maxWidth: .infinity, alignment: .leading)
