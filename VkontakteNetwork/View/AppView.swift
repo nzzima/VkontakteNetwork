@@ -10,7 +10,7 @@ import SwiftUI
 struct AppView: View {
     @EnvironmentObject var dataSource: DataSource
     @State var selectTab = "Friends"
-    let tabs = ["Friends","Groups","Photos","Profile"]
+    let tabs = ["Friends", "Groups", "Photos", "Profile"]
     init() {
         UITabBar.appearance().isHidden = true
     }

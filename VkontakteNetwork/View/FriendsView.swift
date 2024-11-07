@@ -94,7 +94,7 @@ struct FriendItemCore: View {
             }
             Text(surname)
                 .foregroundStyle(Color(dataSource.selectedTheme.labelColor))
-            if (online == 1) {
+            if online == 1 {
                 Text("Online").font(.system(size: 10)).foregroundStyle(.green)
             } else {
                 Text("Offline").font(.system(size: 10)).foregroundStyle(.gray)
