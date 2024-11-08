@@ -31,11 +31,11 @@
       shouldAutocreateTestPlan = "YES">
       <Testables>
          <TestableReference
-            skipped = "YES"
+            skipped = "NO"
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8ECD76432CDA3DCC004DA2D5"
+               BlueprintIdentifier = "8E84CE0F2CDCAA8E00CDFF50"
                BuildableName = "VkontakteNetworkUITests.xctest"
                BlueprintName = "VkontakteNetworkUITests"
                ReferencedContainer = "container:VkontakteNetwork.xcodeproj">
