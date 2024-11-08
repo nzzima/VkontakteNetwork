@@ -26,6 +26,7 @@ final class VkontakteNetworkUITests: XCTestCase {
 //        sut = nil
 //        try super.tearDownWithError()
 //    }
+    
     func testTabBarSelectFriendsScreen() {
         // given
         let friendsScreen = app.buttons["Friends"]
@@ -34,7 +35,7 @@ final class VkontakteNetworkUITests: XCTestCase {
         let titleFriendScreen = selectedScreen.staticTexts["Friends"]
         // then
         friendsScreen.tap()
-        if friendsScreen.isSelected {
+        if friendsScreen.isEnabled {
             XCTAssertTrue(titleFriendScreen.exists)
         }
     }
@@ -50,16 +51,14 @@ final class VkontakteNetworkUITests: XCTestCase {
         let friendNameLabel = scrollViewsQuery.otherElements.staticTexts["Мошин"]
         let backButton = appViews/*@START_MENU_TOKEN@*/.navigationBars["_TtGC7SwiftUI32NavigationStackHosting"]/*[[".cells.navigationBars[\"_TtGC7SwiftUI32NavigationStackHosting\"]",".navigationBars[\"_TtGC7SwiftUI32NavigationStackHosting\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.buttons["Friends"]
         // then
-        //friendsScreen.tap()
+        friendsScreen.tap()
         if friendsScreen.isEnabled {
-            //friendProfileSelectedScreen.tap()
-            if friendProfileSelectedScreen.isEnabled {
-                XCTAssertTrue(friendElement.exists)
-                XCTAssertTrue(friendNameLabel.exists)
-                XCTAssertTrue(backButton.exists)
-                backButton.tap()
-                XCTAssertTrue(friendsScreen.exists)
-            }
+            friendProfileSelectedScreen.tap()
+            XCTAssertTrue(friendElement.exists)
+            XCTAssertTrue(friendNameLabel.exists)
+            XCTAssertTrue(backButton.exists)
+            backButton.tap()
+            XCTAssertTrue(friendsScreen.exists)
         }
     }
     func testTabBarSelectGroupsScreen() {
@@ -70,9 +69,7 @@ final class VkontakteNetworkUITests: XCTestCase {
         let titleGroupScreen = selectedScreen.staticTexts["Groups"]
         // then
         groupsScreen.tap()
-        if groupsScreen.isSelected {
-            XCTAssertTrue(titleGroupScreen.exists)
-        }
+        XCTAssertFalse(titleGroupScreen.exists)
     }
     func testTabBarSelectPhotosScreen() {
         // given
@@ -81,20 +78,26 @@ final class VkontakteNetworkUITests: XCTestCase {
         let selectedScreen = appViews.navigationBars["Photos"]
         let titlePhotosScreen = selectedScreen.staticTexts["Photos"]
         // then
-        if photosScreen.isSelected {
-            XCTAssertTrue(titlePhotosScreen.exists)
-        }
+        photosScreen.tap()
+        XCTAssertFalse(titlePhotosScreen.exists)
     }
     func testTabBarSelectOwnProfileScreen() {
         // given
         let ownProfileScreen = app.buttons["Profile"]
-        let appViews = app.collectionViews
-        let selectedScreen = appViews.navigationBars["Profile"]
-        let titleOwnProfileScreen = selectedScreen.staticTexts["Profile"]
+        let scrollViewsQuery = app.collectionViews/*@START_MENU_TOKEN@*/.scrollViews/*[[".cells.scrollViews",".scrollViews"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        let elementsQuery = scrollViewsQuery.otherElements
+        let profileTitle = elementsQuery.staticTexts["Profile"]
+        //let photo = scrollViewsQuery.otherElements.containing(.staticText, identifier:"Profile").children(matching: .other).element.children(matching: .other).element
+        let softButton = elementsQuery.buttons["Soft Theme"]
+        let darkButton = elementsQuery.buttons["Dark Theme"]
+        let lightButton = elementsQuery.buttons["Light Theme"]
         // then
-        if ownProfileScreen.isSelected {
-            XCTAssertTrue(titleOwnProfileScreen.exists)
-        }
+        ownProfileScreen.tap()
+        XCTAssertTrue(profileTitle.exists)
+        //XCTAssertTrue(photo.exists)
+        XCTAssertTrue(softButton.exists)
+        XCTAssertTrue(darkButton.exists)
+        XCTAssertTrue(lightButton.exists)
     }
 
     @MainActor
@@ -105,14 +108,14 @@ final class VkontakteNetworkUITests: XCTestCase {
 
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-
-    @MainActor
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
+//
+//    @MainActor
+//    func testLaunchPerformance() throws {
+//        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
+//            // This measures how long it takes to launch your application.
+//            measure(metrics: [XCTApplicationLaunchMetric()]) {
+//                XCUIApplication().launch()
+//            }
+//        }
+//    }
 }
